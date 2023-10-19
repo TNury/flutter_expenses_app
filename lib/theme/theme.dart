@@ -8,9 +8,13 @@ const _roundedShape = RoundedRectangleBorder(
 
 UnderlineInputBorder _getInputBorder({Color borderColor = Colors.black}) {
   return const UnderlineInputBorder(
-    borderSide: BorderSide.none,
-    borderRadius: BorderRadius.all(
-      Radius.circular(4),
+    borderSide: BorderSide(
+      width: 1.5,
+      color: Colors.black,
+    ),
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(4),
+      topRight: Radius.circular(4),
     ),
   );
 }
@@ -25,7 +29,12 @@ final ThemeData theme = ThemeData(
 
   // Bottom sheet theme
   bottomSheetTheme: const BottomSheetThemeData(
-    shape: _roundedShape,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(4),
+        topRight: Radius.circular(4),
+      ),
+    ),
   ),
 
   // Dialog theme
@@ -80,5 +89,6 @@ final ThemeData theme = ThemeData(
       color: Colors.red,
       height: 1.5,
     ),
+    suffixIconColor: Colors.blue,
   ),
 );

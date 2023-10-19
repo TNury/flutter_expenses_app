@@ -89,6 +89,8 @@ class _ExpenseCreationModalState extends State<ExpenseCreationModal> {
                   if (value!.isEmpty) {
                     return 'Please insert a title.';
                   }
+
+                  return null;
                 },
               ),
               const SizedBox(
@@ -110,18 +112,25 @@ class _ExpenseCreationModalState extends State<ExpenseCreationModal> {
                         if (value!.isEmpty) {
                           return 'Please insert an amount.';
                         }
+
+                        return null;
                       },
                     ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: DateInput(
-                      date: _formValues['date'] != null
-                          ? _formValues['date'] as DateTime
-                          : null,
                       labelText: 'Date',
-                      onChange: _updateDate,
-                      error: _dateError,
+                      onSaved: (value) {
+                        _updateField('date', value);
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please insert a date.';
+                        }
+
+                        return null;
+                      },
                     ),
                   ),
                 ],
