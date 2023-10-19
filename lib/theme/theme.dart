@@ -7,28 +7,36 @@ const _roundedShape = RoundedRectangleBorder(
 );
 
 UnderlineInputBorder _getInputBorder({Color borderColor = Colors.black}) {
-  return UnderlineInputBorder(
-    borderSide: BorderSide(
-      width: 1.5,
-      style: BorderStyle.solid,
-      color: borderColor,
-    ),
-    borderRadius: const BorderRadius.only(
-      topLeft: Radius.circular(4),
-      topRight: Radius.circular(4),
-      bottomLeft: Radius.zero,
-      bottomRight: Radius.zero,
+  return const UnderlineInputBorder(
+    borderSide: BorderSide.none,
+    borderRadius: BorderRadius.all(
+      Radius.circular(4),
     ),
   );
 }
 
 final ThemeData theme = ThemeData(
+  // App-wide settings
   useMaterial3: true,
   fontFamily: 'JetBrains Mono Regular',
+
+  // Icon theme
   iconTheme: const IconThemeData(color: Colors.blueAccent),
+
+  // Bottom sheet theme
   bottomSheetTheme: const BottomSheetThemeData(
     shape: _roundedShape,
   ),
+
+  // Dialog theme
+  dialogBackgroundColor: Colors.red,
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(4),
+    ),
+  ),
+
+  // Card theme
   cardTheme: const CardTheme(
     elevation: 4,
     color: Colors.white,
@@ -37,6 +45,8 @@ final ThemeData theme = ThemeData(
       borderRadius: BorderRadius.all(Radius.circular(4)),
     ),
   ),
+
+  // Filled button theme
   filledButtonTheme: const FilledButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStatePropertyAll(Colors.blue),
@@ -44,16 +54,19 @@ final ThemeData theme = ThemeData(
       shape: MaterialStatePropertyAll(_roundedShape),
     ),
   ),
+
+  // Floating action button theme
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     elevation: 4,
     backgroundColor: Colors.white,
     shape: _roundedShape,
   ),
+
+  // Input decoration theme
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.grey[300],
-    contentPadding: const EdgeInsets.all(16),
-    // hintText: 'john@doe.gmail.com',
+    contentPadding: const EdgeInsets.all(0),
     border: _getInputBorder(),
     focusedBorder: _getInputBorder(),
     errorBorder: _getInputBorder(borderColor: Colors.red),
@@ -62,6 +75,10 @@ final ThemeData theme = ThemeData(
     focusedErrorBorder: _getInputBorder(),
     hintStyle: const TextStyle(color: Colors.grey),
     prefixStyle: const TextStyle(color: Colors.black),
-    errorStyle: const TextStyle(fontSize: 16),
+    errorStyle: const TextStyle(
+      fontSize: 16,
+      color: Colors.red,
+      height: 1.5,
+    ),
   ),
 );
