@@ -32,6 +32,7 @@ class Input extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 16,
@@ -39,6 +40,8 @@ class Input extends StatelessWidget {
           decoration: InputDecoration(
             prefixText: prefixText,
             hintText: hintText,
+            errorMaxLines: 10,
+            contentPadding: const EdgeInsets.all(16),
           ),
           keyboardType: type,
           validator: validator,
