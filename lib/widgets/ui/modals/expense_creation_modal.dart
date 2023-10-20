@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/models/expense.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/generic/input.dart';
