@@ -37,14 +37,6 @@ final ThemeData theme = ThemeData(
     ),
   ),
 
-  // Dialog theme
-  dialogBackgroundColor: Colors.red,
-  dialogTheme: DialogTheme(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(4),
-    ),
-  ),
-
   // Card theme
   cardTheme: const CardTheme(
     elevation: 4,
