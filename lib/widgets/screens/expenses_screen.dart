@@ -14,13 +14,13 @@ class ExpensesScreen extends StatefulWidget {
 class _ExpensesScreenState extends State<ExpensesScreen> {
   final List<Expense> _registeredExpenses = [];
 
-  void createExpense(Expense expense) {
+  void _createExpense(Expense expense, [int index = 0]) {
     setState(() {
-      _registeredExpenses.add(expense);
+      _registeredExpenses.insert(index, expense);
     });
   }
 
-  void removeExpense(Expense expense) {
+  void _removeExpense(Expense expense) {
     setState(() {
       _registeredExpenses.remove(expense);
     });
@@ -31,7 +31,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
       context: context,
       isScrollControlled: true,
       builder: (modalContext) => ExpenseCreationModal(
-        createExpense: createExpense,
+        createExpense: _createExpense,
       ),
     );
   }
@@ -47,12 +47,12 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'The Chart',
-              style: TextStyle(fontSize: 24, color: Colors.white),
-            ),
             Expanded(
-              child: ExpensesList(_registeredExpenses, removeExpense),
+              child: ExpensesList(
+                expensesList: _registeredExpenses,
+                removeExpense: _removeExpense,
+                createExpense: _createExpense,
+              ),
             ),
           ],
         ),

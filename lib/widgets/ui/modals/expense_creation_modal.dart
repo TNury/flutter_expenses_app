@@ -10,7 +10,7 @@ class ExpenseCreationModal extends StatefulWidget {
     super.key,
   });
 
-  final Function(Expense expense) createExpense;
+  final Function(Expense expense, [int index]) createExpense;
 
   @override
   State<ExpenseCreationModal> createState() => _ExpenseCreationModalState();
