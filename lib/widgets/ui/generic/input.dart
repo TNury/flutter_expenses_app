@@ -34,7 +34,7 @@ class Input extends StatelessWidget {
       children: [
         Text(
           labelText,
-          style: const TextStyle(fontSize: 16),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(height: 8),
         TextFormField(
@@ -42,10 +42,7 @@ class Input extends StatelessWidget {
           onTap: onTap,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: controller,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
           decoration: InputDecoration(
             prefixText: prefixText,
             hintText: hintText,

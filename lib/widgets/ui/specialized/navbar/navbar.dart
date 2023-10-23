@@ -8,10 +8,6 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: const Text(
         'Overview',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
       ),
     );
   }

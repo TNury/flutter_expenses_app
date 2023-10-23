@@ -41,13 +41,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     Expense(
       title: 'PS5',
       category: Category.leisure,
-      amount: 4500,
-      date: DateTime.now(),
-    ),
-    Expense(
-      title: 'PS5',
-      category: Category.leisure,
-      amount: 4500,
+      amount: 400,
       date: DateTime.now(),
     ),
   ];

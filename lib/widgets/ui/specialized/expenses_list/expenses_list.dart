@@ -24,14 +24,16 @@ class ExpensesList extends StatelessWidget {
     scaffoldMessenger.showSnackBar(
       SnackBar(
         padding: const EdgeInsets.all(16),
-        backgroundColor: Colors.red,
+        backgroundColor: Theme.of(context).colorScheme.error,
         duration: const Duration(seconds: 2),
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               'Expense deleted.',
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(
+                fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+              ),
             ),
             TextButton(
               onPressed: () {
@@ -39,12 +41,11 @@ class ExpensesList extends StatelessWidget {
 
                 createExpense(expense, index);
               },
-              child: const Text(
+              child: Text(
                 'Undo',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Colors.white,
+                    ),
               ),
             )
           ],
@@ -60,14 +61,11 @@ class ExpensesList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Your expenses',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
-          const SizedBox(height: 16),
+          // const SizedBox(height: 16),
           if (expensesList.isNotEmpty)
             Expanded(
               child: ListView.builder(
@@ -78,24 +76,22 @@ class ExpensesList extends StatelessWidget {
                       Dismissible(
                         key: ValueKey(expensesList[index]),
                         onDismissed: (_) {
-                          _handleOnDismissed(
-                              context, expensesList[index], index);
+                          _handleOnDismissed(context, expensesList[index], index);
                         },
                         background: Container(
                           margin: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.all(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.error,
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(16),
                             ),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              "Delete expense",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                              'Delete expense',
+                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Colors.white,
+                                  ),
                               textAlign: TextAlign.end,
                             ),
                           ),
@@ -104,17 +100,18 @@ class ExpensesList extends StatelessWidget {
                           expensesList[index],
                         ),
                       ),
-                      // const SizedBox(height: 8),
                     ],
                   );
                 },
               ),
             ),
           if (expensesList.isEmpty)
-            const Center(
+            Center(
               child: Text(
                 'Your list of expenses list is empty. Click the add button below to add a new expense.',
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Colors.white,
+                    ),
                 textAlign: TextAlign.center,
               ),
             ),

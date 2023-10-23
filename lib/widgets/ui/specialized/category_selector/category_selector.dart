@@ -17,9 +17,9 @@ class CategorySelector extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Category',
-          style: TextStyle(fontSize: 16),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(height: 8),
         DropdownButtonFormField(
@@ -27,10 +27,16 @@ class CategorySelector extends StatelessWidget {
           itemHeight: 56,
           isExpanded: false,
           elevation: 4,
-          decoration: const InputDecoration(
-            contentPadding: EdgeInsets.fromLTRB(16, 16, 8, 16),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(16, 16, 8, 16),
             hintText: 'Food, travel, etc',
+            hintStyle: TextStyle(
+              fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+              color: Colors.grey,
+              fontWeight: Theme.of(context).textTheme.bodyMedium!.fontWeight,
+            ),
           ),
+          style: Theme.of(context).textTheme.bodyMedium,
           validator: (value) {
             if (value == null) {
               return 'Select the category';
@@ -44,6 +50,7 @@ class CategorySelector extends StatelessWidget {
                 child: Text(
                   getCapitalizedString(entry.name),
                   textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               );
             }).toList();
@@ -56,6 +63,7 @@ class CategorySelector extends StatelessWidget {
                 child: Text(
                   getCapitalizedString(entry.name),
                   textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
             );

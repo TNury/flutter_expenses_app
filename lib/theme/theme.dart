@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_expenses_tracker/theme/text_theme.dart';
 
 const _roundedShape = RoundedRectangleBorder(
   borderRadius: BorderRadius.all(
@@ -19,29 +20,28 @@ UnderlineInputBorder _getInputBorder({Color borderColor = Colors.black}) {
   );
 }
 
-final colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
+final _colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
 
-final ThemeData theme = ThemeData(
-  fontFamily: 'Poppins',
-  // App-wide settings
-).copyWith(
+final ThemeData theme = ThemeData().copyWith(
   useMaterial3: true,
 
   // Main color scheme
-  colorScheme: colorScheme,
+  colorScheme: _colorScheme,
 
-  scaffoldBackgroundColor: colorScheme.background,
+  scaffoldBackgroundColor: _colorScheme.background,
 
+  textTheme: textTheme,
   appBarTheme: const AppBarTheme().copyWith(
-    backgroundColor: colorScheme.background,
+    backgroundColor: _colorScheme.background,
     centerTitle: true,
+    titleTextStyle: textTheme.titleSmall,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(8),
         bottomRight: Radius.circular(8),
       ),
     ),
-    // foregroundColor: colorScheme.primaryContainer,
+    // foregroundColor: _colorScheme.primaryContainer,
   ),
 
   // Dialog theme
@@ -50,7 +50,7 @@ final ThemeData theme = ThemeData(
   ),
 
   // Icon theme
-  iconTheme: const IconThemeData().copyWith(color: colorScheme.primary),
+  iconTheme: const IconThemeData().copyWith(color: _colorScheme.primary),
 
   // Bottom sheet theme
   bottomSheetTheme: const BottomSheetThemeData().copyWith(
@@ -64,17 +64,17 @@ final ThemeData theme = ThemeData(
 
   // Card theme
   cardTheme: const CardTheme().copyWith(
-    elevation: 2,
-    color: colorScheme.background,
-    surfaceTintColor: colorScheme.background,
+    elevation: 0,
+    color: _colorScheme.background,
+    surfaceTintColor: _colorScheme.background,
     shape: _roundedShape,
   ),
 
   // Filled button theme
-  filledButtonTheme: const FilledButtonThemeData(
-    style: ButtonStyle(
-      padding: MaterialStatePropertyAll(EdgeInsets.all(16)),
-      shape: MaterialStatePropertyAll(_roundedShape),
+  filledButtonTheme: FilledButtonThemeData(
+    style: FilledButton.styleFrom(
+      padding: const EdgeInsets.all(16),
+      shape: _roundedShape,
     ),
   ),
 
@@ -82,7 +82,7 @@ final ThemeData theme = ThemeData(
   floatingActionButtonTheme: const FloatingActionButtonThemeData().copyWith(
     elevation: 2,
     shape: _roundedShape,
-    backgroundColor: colorScheme.primary,
+    backgroundColor: _colorScheme.primary,
     foregroundColor: Colors.white,
   ),
 
@@ -92,7 +92,7 @@ final ThemeData theme = ThemeData(
     contentPadding: const EdgeInsets.all(0),
     border: _getInputBorder(),
     focusedBorder: _getInputBorder(),
-    errorBorder: _getInputBorder(borderColor: colorScheme.error),
+    errorBorder: _getInputBorder(borderColor: _colorScheme.error),
     enabledBorder: _getInputBorder(),
     disabledBorder: _getInputBorder(),
     focusedErrorBorder: _getInputBorder(),
@@ -102,6 +102,6 @@ final ThemeData theme = ThemeData(
       fontSize: 16,
       height: 1.5,
     ),
-    suffixIconColor: colorScheme.primary,
+    suffixIconColor: _colorScheme.primary,
   ),
 );

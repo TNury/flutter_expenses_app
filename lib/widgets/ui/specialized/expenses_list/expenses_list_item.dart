@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/models/expense.dart';
 
-import 'package:flutter_expenses_tracker/theme/theme.dart';
-
 class ExpensesListItem extends StatelessWidget {
   const ExpensesListItem(this.expenseData, {super.key});
 
   final Expense expenseData;
 
-  Color get iconBackground {
+  Color getIconBackground(BuildContext context) {
     switch (expenseData.category) {
       case Category.food:
         return Colors.green;
@@ -19,7 +17,7 @@ class ExpensesListItem extends StatelessWidget {
       case Category.study:
         return Colors.purple;
       default:
-        return colorScheme.primary;
+        return Theme.of(context).colorScheme.primary;
     }
   }
 
@@ -28,7 +26,7 @@ class ExpensesListItem extends StatelessWidget {
     return Card(
       child: Container(
         height: 90,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -36,7 +34,7 @@ class ExpensesListItem extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: iconBackground,
+                color: getIconBackground(context),
               ),
               child: Icon(
                 categoryIcons[expenseData.category],
@@ -58,31 +56,35 @@ class ExpensesListItem extends StatelessWidget {
                           expenseData.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold,),
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ),
-                      const SizedBox(width: 16),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '\$${expenseData.amount.toStringAsFixed(2)}',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                      ),
                       Row(
                         children: [
                           Text(
                             expenseData.formattedDate,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: colorScheme.secondary,
+                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                           ),
                           const SizedBox(width: 8),
                           const Icon(Icons.date_range),
                         ],
-                      ),
+                      )
                     ],
-                  ),
-                  Text(
-                    '\$${expenseData.amount.toStringAsFixed(2)}',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: colorScheme.secondary,
-                    ),
                   ),
                 ],
               ),

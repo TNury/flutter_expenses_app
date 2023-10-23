@@ -135,9 +135,9 @@ class _ExpenseCreationModalState extends State<ExpenseCreationModal> {
                   width: double.infinity,
                   child: FilledButton(
                     onPressed: _submitForm,
-                    child: const Text(
+                    child: Text(
                       'Create Expense',
-                      style: TextStyle(fontSize: 16),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 ),
