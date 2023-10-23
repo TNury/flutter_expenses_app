@@ -55,58 +55,71 @@ class ExpensesList extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Column(
-      children: [
-        const Text(
-          'Your expenses',
-          style: TextStyle(fontSize: 24, color: Colors.white),
-        ),
-        const SizedBox(height: 32),
-        if (expensesList.isNotEmpty)
-          Expanded(
-            child: ListView.builder(
-              itemCount: expensesList.length,
-              itemBuilder: (context, index) {
-                return Dismissible(
-                  key: ValueKey(expensesList[index]),
-                  onDismissed: (_) {
-                    _handleOnDismissed(context, expensesList[index], index);
-                  },
-                  background: Container(
-                    margin: const EdgeInsets.all(4),
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(4),
-                      ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Delete expense",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Your expenses',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 16),
+          if (expensesList.isNotEmpty)
+            Expanded(
+              child: ListView.builder(
+                itemCount: expensesList.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Dismissible(
+                        key: ValueKey(expensesList[index]),
+                        onDismissed: (_) {
+                          _handleOnDismissed(
+                              context, expensesList[index], index);
+                        },
+                        background: Container(
+                          margin: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "Delete expense",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                              textAlign: TextAlign.end,
+                            ),
+                          ),
                         ),
-                        textAlign: TextAlign.end,
+                        child: ExpensesListItem(
+                          expensesList[index],
+                        ),
                       ),
-                    ),
-                  ),
-                  child: ExpensesListItem(
-                    expensesList[index],
-                  ),
-                );
-              },
+                      // const SizedBox(height: 8),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-        if (expensesList.isEmpty)
-          const Center(
-            child: Text(
-              'Your list of expenses list is empty. Click the add button below to add a new expense.',
-              style: TextStyle(fontSize: 16, color: Colors.white),
-              textAlign: TextAlign.center,
+          if (expensesList.isEmpty)
+            const Center(
+              child: Text(
+                'Your list of expenses list is empty. Click the add button below to add a new expense.',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -4,18 +4,6 @@ import 'package:flutter_expenses_tracker/widgets/ui/generic/input.dart';
 
 import 'package:flutter_expenses_tracker/utils/utils.dart';
 
-final _datePickerStyles = ThemeData(
-  useMaterial3: true,
-  colorScheme: const ColorScheme.light(
-    primary: Colors.blue,
-  ),
-  dialogTheme: DialogTheme(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(4),
-    ),
-  ),
-);
-
 class DateInput extends StatefulWidget {
   const DateInput({
     required this.labelText,
@@ -46,12 +34,6 @@ class _DateInputState extends State<DateInput> {
       initialDate: now,
       firstDate: firstDate,
       lastDate: now,
-      builder: (BuildContext context, Widget? child) {
-        return Theme(
-          data: _datePickerStyles,
-          child: child!,
-        );
-      },
     );
 
     if (chosenDate != null) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/modals/expense_creation_modal.dart';
+import 'package:flutter_expenses_tracker/widgets/ui/specialized/chart/chart.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/specialized/navbar/navbar.dart';
 import 'package:flutter_expenses_tracker/models/expense.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/specialized/expenses_list/expenses_list.dart';
@@ -12,7 +13,44 @@ class ExpensesScreen extends StatefulWidget {
 }
 
 class _ExpensesScreenState extends State<ExpensesScreen> {
-  final List<Expense> _registeredExpenses = [];
+  final List<Expense> _registeredExpenses = [
+    Expense(
+      title: 'Groceries',
+      category: Category.food,
+      amount: 45,
+      date: DateTime.now(),
+    ),
+    Expense(
+      title: 'Flutter Course',
+      category: Category.study,
+      amount: 20,
+      date: DateTime.now(),
+    ),
+    Expense(
+      title: 'New Desk',
+      category: Category.work,
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    Expense(
+      title: 'California Trip',
+      category: Category.travel,
+      amount: 4500,
+      date: DateTime.now(),
+    ),
+    Expense(
+      title: 'PS5',
+      category: Category.leisure,
+      amount: 4500,
+      date: DateTime.now(),
+    ),
+    Expense(
+      title: 'PS5',
+      category: Category.leisure,
+      amount: 4500,
+      date: DateTime.now(),
+    ),
+  ];
 
   void _createExpense(Expense expense, [int index = 0]) {
     setState(() {
@@ -40,28 +78,25 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
   Widget build(context) {
     return Scaffold(
       appBar: const Navbar(),
-      backgroundColor: Colors.blue,
       resizeToAvoidBottomInset: false,
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: ExpensesList(
-                expensesList: _registeredExpenses,
-                removeExpense: _removeExpense,
-                createExpense: _createExpense,
-              ),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Chart(),
+          const SizedBox(height: 48),
+          Expanded(
+            child: ExpensesList(
+              expensesList: _registeredExpenses,
+              removeExpense: _removeExpense,
+              createExpense: _createExpense,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _openExpenseAdditionOverlay,
         child: const Icon(
           Icons.add,
-          color: Colors.blueAccent,
         ),
       ),
     );

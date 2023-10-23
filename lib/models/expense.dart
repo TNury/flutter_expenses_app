@@ -4,11 +4,11 @@ import 'package:flutter_expenses_tracker/utils/utils.dart';
 enum Category { food, travel, leisure, work, study }
 
 const categoryIcons = {
-  Category.food: Icons.lunch_dining,
-  Category.travel: Icons.flight_takeoff,
-  Category.leisure: Icons.movie,
+  Category.food: Icons.lunch_dining_outlined,
+  Category.travel: Icons.flight_takeoff_outlined,
+  Category.leisure: Icons.movie_outlined,
   Category.work: Icons.work,
-  Category.study: Icons.menu_book
+  Category.study: Icons.menu_book_outlined
 };
 
 class Expense {

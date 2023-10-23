@@ -6,11 +6,11 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
       title: const Text(
-        'Expenses Tracker',
+        'Overview',
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
