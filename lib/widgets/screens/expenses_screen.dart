@@ -76,7 +76,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Chart(),
+          Chart(_registeredExpenses),
           const SizedBox(height: 48),
           Expanded(
             child: ExpensesList(

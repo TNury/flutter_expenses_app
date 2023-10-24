@@ -1,7 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_expenses_tracker/models/expense.dart';
+import 'package:flutter_expenses_tracker/models/expense_bucket.dart';
 
 class Chart extends StatelessWidget {
-  const Chart({super.key});
+  const Chart(this.registeredExpenses, {super.key});
+
+  final List<Expense> registeredExpenses;
 
   @override
   Widget build(BuildContext context) {
