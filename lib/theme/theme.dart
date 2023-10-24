@@ -7,7 +7,7 @@ const roundedShape = RoundedRectangleBorder(
   ),
 );
 
-UnderlineInputBorder getInputBorder([Color borderColor = Colors.black]) {
+UnderlineInputBorder getInputBorder([Color borderColor = Colors.white]) {
   return UnderlineInputBorder(
     borderSide: BorderSide(
       width: 1.5,
@@ -20,7 +20,11 @@ UnderlineInputBorder getInputBorder([Color borderColor = Colors.black]) {
   );
 }
 
-final _colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
+final _colorScheme = ColorScheme.fromSeed(
+  seedColor: Colors.blue,
+  brightness: Brightness.dark,
+  primary: Colors.blue,
+);
 
 final ThemeData theme = ThemeData().copyWith(
   useMaterial3: true,
@@ -28,14 +32,14 @@ final ThemeData theme = ThemeData().copyWith(
   // Main color scheme
   colorScheme: _colorScheme,
 
-  scaffoldBackgroundColor: _colorScheme.background,
+  scaffoldBackgroundColor: _colorScheme.onSecondary,
 
-  textTheme: textTheme(),
+  textTheme: textTheme,
   appBarTheme: const AppBarTheme().copyWith(
     scrolledUnderElevation: 0,
-    backgroundColor: _colorScheme.background,
+    backgroundColor: _colorScheme.onSecondary,
     centerTitle: true,
-    titleTextStyle: textTheme().titleSmall,
+    titleTextStyle: textTheme.titleSmall,
   ),
 
   // Dialog theme
@@ -48,7 +52,8 @@ final ThemeData theme = ThemeData().copyWith(
 
   // Bottom sheet theme
   bottomSheetTheme: const BottomSheetThemeData().copyWith(
-    // backgroundColor: _colorScheme.onBackground,
+    backgroundColor: _colorScheme.onSecondary,
+    surfaceTintColor: _colorScheme.onSecondary,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(16),
@@ -69,6 +74,8 @@ final ThemeData theme = ThemeData().copyWith(
     style: FilledButton.styleFrom(
       padding: const EdgeInsets.all(16),
       shape: roundedShape,
+      backgroundColor: _colorScheme.primary,
+      textStyle: textTheme.bodyMedium,
     ),
   ),
 
@@ -90,8 +97,10 @@ final ThemeData theme = ThemeData().copyWith(
     enabledBorder: getInputBorder(),
     disabledBorder: getInputBorder(),
     focusedErrorBorder: getInputBorder(),
-    hintStyle: const TextStyle(color: Colors.grey),
-    prefixStyle: const TextStyle(color: Colors.black),
+    hintStyle: const TextStyle(
+      color: Colors.white24,
+    ),
+    prefixStyle: const TextStyle(color: Colors.white),
     errorStyle: const TextStyle(
       fontSize: 16,
       height: 1.5,
