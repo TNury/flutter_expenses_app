@@ -34,6 +34,30 @@ class _DateInputState extends State<DateInput> {
       initialDate: now,
       firstDate: firstDate,
       lastDate: now,
+      switchToInputEntryModeIcon: const Icon(null),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                  onPrimary: Colors.white,
+                  onSurface: Colors.white,
+                  surfaceVariant: Colors.white,
+                  onSurfaceVariant: Colors.white,
+                  outline: Colors.white,
+                  outlineVariant: Colors.white,
+                ),
+            textTheme: Theme.of(context).textTheme.copyWith(
+                  bodyLarge: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                      ),
+                  titleSmall: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+                      ),
+                ),
+          ),
+          child: child!,
+        );
+      },
     );
 
     if (chosenDate != null) {
@@ -63,7 +87,7 @@ class _DateInputState extends State<DateInput> {
       suffixIcon: IconButton(
         onPressed: _presentDatePicker,
         icon: const Icon(
-          Icons.calendar_month,
+          Icons.calendar_month_outlined,
         ),
       ),
       onTap: _presentDatePicker,

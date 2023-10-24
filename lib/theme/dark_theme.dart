@@ -5,6 +5,7 @@ import 'package:flutter_expenses_tracker/theme/text_theme.dart';
 final _darkColorScheme = ColorScheme.fromSeed(
   seedColor: Colors.blue,
   brightness: Brightness.dark,
+  primary: Colors.blue,
 );
 
 final ThemeData darkTheme = theme.copyWith(
@@ -32,6 +33,15 @@ final ThemeData darkTheme = theme.copyWith(
     surfaceTintColor: _darkColorScheme.onSecondary,
   ),
 
+  filledButtonTheme: FilledButtonThemeData(
+    style: FilledButton.styleFrom(
+      padding: const EdgeInsets.all(16),
+      shape: roundedShape,
+      backgroundColor: _darkColorScheme.primary,
+      textStyle: textTheme().bodyMedium,
+    ),
+  ),
+
   // Floating action button theme
   floatingActionButtonTheme: theme.floatingActionButtonTheme.copyWith(
     elevation: 2,
@@ -51,6 +61,7 @@ final ThemeData darkTheme = theme.copyWith(
     hintStyle: theme.inputDecorationTheme.hintStyle!.copyWith(
       color: Colors.white24,
     ),
+    prefixStyle: const TextStyle(color: Colors.white),
     // prefixStyle: const TextStyle(color: Colors.black),
     suffixIconColor: _darkColorScheme.primary,
   ),

@@ -81,7 +81,7 @@ class ExpensesListItem extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          const Icon(Icons.date_range),
+                          const Icon(Icons.calendar_month_outlined),
                         ],
                       )
                     ],

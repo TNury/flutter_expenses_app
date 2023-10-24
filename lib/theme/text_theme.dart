@@ -23,19 +23,19 @@ TextTheme textTheme([Color? textColor]) {
             ),
 
         // Headlines
-        headlineSmall: ThemeData().textTheme.titleLarge!.copyWith(
+        headlineSmall: ThemeData().textTheme.headlineSmall!.copyWith(
               fontFamily: 'Poppins',
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: textColor,
             ),
-        headlineMedium: ThemeData().textTheme.titleLarge!.copyWith(
+        headlineMedium: ThemeData().textTheme.headlineMedium!.copyWith(
               fontFamily: 'Poppins',
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: textColor,
             ),
-        headlineLarge: ThemeData().textTheme.titleLarge!.copyWith(
+        headlineLarge: ThemeData().textTheme.headlineLarge!.copyWith(
               fontFamily: 'Poppins',
               fontSize: 28,
               fontWeight: FontWeight.bold,
@@ -43,19 +43,19 @@ TextTheme textTheme([Color? textColor]) {
             ),
 
         // Body texts
-        bodySmall: ThemeData().textTheme.titleLarge!.copyWith(
+        bodySmall: ThemeData().textTheme.bodySmall!.copyWith(
               fontFamily: 'Poppins',
               fontSize: 14,
               fontWeight: FontWeight.normal,
               color: textColor,
             ),
-        bodyMedium: ThemeData().textTheme.titleLarge!.copyWith(
+        bodyMedium: ThemeData().textTheme.bodyMedium!.copyWith(
               fontFamily: 'Poppins',
               fontSize: 16,
               fontWeight: FontWeight.normal,
               color: textColor,
             ),
-        bodyLarge: ThemeData().textTheme.titleLarge!.copyWith(
+        bodyLarge: ThemeData().textTheme.bodyLarge!.copyWith(
               fontFamily: 'Poppins',
               fontSize: 18,
               fontWeight: FontWeight.normal,
@@ -63,29 +63,35 @@ TextTheme textTheme([Color? textColor]) {
             ),
 
         // Label texts
-        labelSmall: ThemeData().textTheme.titleLarge!.copyWith(
+        labelSmall: ThemeData().textTheme.labelSmall!.copyWith(
               fontFamily: 'Poppins',
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
               color: textColor,
             ),
-        labelMedium: ThemeData().textTheme.titleLarge!.copyWith(
+        labelMedium: ThemeData().textTheme.labelMedium!.copyWith(
               fontFamily: 'Poppins',
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
               color: textColor,
             ),
-        labelLarge: ThemeData().textTheme.titleLarge!.copyWith(
+        labelLarge: ThemeData().textTheme.labelLarge!.copyWith(
               fontFamily: 'Poppins',
+              fontSize: 18,
+              fontWeight: FontWeight.normal,
               color: textColor,
             ),
 
         // Display texts
-        displaySmall: ThemeData().textTheme.titleLarge!.copyWith(
+        displaySmall: ThemeData().textTheme.displaySmall!.copyWith(
               fontFamily: 'Poppins',
               color: textColor,
             ),
-        displayMedium: ThemeData().textTheme.titleLarge!.copyWith(
+        displayMedium: ThemeData().textTheme.displayMedium!.copyWith(
               fontFamily: 'Poppins',
               color: textColor,
             ),
-        displayLarge: ThemeData().textTheme.titleLarge!.copyWith(
+        displayLarge: ThemeData().textTheme.displayLarge!.copyWith(
               fontFamily: 'Poppins',
               color: textColor,
             ),

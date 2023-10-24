@@ -17,13 +17,13 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     Expense(
       title: 'Groceries',
       category: Category.food,
-      amount: 45,
+      amount: 200,
       date: DateTime.now(),
     ),
     Expense(
       title: 'Flutter Course',
       category: Category.study,
-      amount: 20,
+      amount: 15,
       date: DateTime.now(),
     ),
     Expense(
@@ -35,7 +35,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     Expense(
       title: 'California Trip',
       category: Category.travel,
-      amount: 4500,
+      amount: 1000,
       date: DateTime.now(),
     ),
     Expense(

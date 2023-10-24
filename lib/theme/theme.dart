@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/theme/text_theme.dart';
 
-const _roundedShape = RoundedRectangleBorder(
+const roundedShape = RoundedRectangleBorder(
   borderRadius: BorderRadius.all(
     Radius.circular(16),
   ),
@@ -40,7 +40,7 @@ final ThemeData theme = ThemeData().copyWith(
 
   // Dialog theme
   dialogTheme: const DialogTheme().copyWith(
-    shape: _roundedShape,
+    shape: roundedShape,
   ),
 
   // Icon theme
@@ -68,14 +68,14 @@ final ThemeData theme = ThemeData().copyWith(
   filledButtonTheme: FilledButtonThemeData(
     style: FilledButton.styleFrom(
       padding: const EdgeInsets.all(16),
-      shape: _roundedShape,
+      shape: roundedShape,
     ),
   ),
 
   // Floating action button theme
   floatingActionButtonTheme: const FloatingActionButtonThemeData().copyWith(
     elevation: 2,
-    shape: _roundedShape,
+    shape: roundedShape,
     backgroundColor: _colorScheme.primary,
     foregroundColor: Colors.white,
   ),

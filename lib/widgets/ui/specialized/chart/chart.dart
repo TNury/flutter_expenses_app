@@ -1,32 +1,50 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/models/expense.dart';
-import 'package:flutter_expenses_tracker/models/expense_bucket.dart';
+import 'package:flutter_expenses_tracker/utils/utils.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Chart extends StatelessWidget {
   const Chart(this.registeredExpenses, {super.key});
 
   final List<Expense> registeredExpenses;
 
+  // List<GDPData> get _chartsData {
+  //   return const [
+  //     GDPData('Food', 50),
+  //     GDPData('Travel', 600),
+  //     GDPData('Study', 200),
+  //     GDPData('Work', 300),
+  //     GDPData('Leisure', 300),
+  //   ];
+  // }
+
   @override
   Widget build(BuildContext context) {
     final double containerHeight =
-        MediaQuery.of(context).size.height * 0.3; // 30% of the screen height
+        MediaQuery.of(context).size.height * 0.4; // 40% of the screen height
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondaryContainer,
       ),
-      child: Material(
-        elevation: 8,
-        borderRadius: BorderRadius.circular(16),
-        clipBehavior: Clip.hardEdge,
-        child: SizedBox(
-          width: double.infinity,
-          height: containerHeight,
-        ),
+      height: containerHeight,
+      child: SfCartesianChart(
+        series: <ChartSeries>[
+          ColumnSeries<Expense, String>(
+            dataSource: registeredExpenses,
+            xValueMapper: (Expense expense, _) =>
+                getCapitalizedString(expense.category.name),
+            yValueMapper: (Expense expense, _) => expense.amount,
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(4),
+              topRight: Radius.circular(4),
+            ),
+          )
+        ],
+        primaryXAxis: CategoryAxis(),
+        primaryYAxis: NumericAxis(),
       ),
     );
   }
