@@ -65,56 +65,44 @@ class ExpensesList extends StatelessWidget {
             'Your expenses',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          // const SizedBox(height: 16),
-          if (expensesList.isNotEmpty)
-            Expanded(
-              child: ListView.builder(
-                itemCount: expensesList.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Dismissible(
-                        key: ValueKey(expensesList[index]),
-                        onDismissed: (_) {
-                          _handleOnDismissed(context, expensesList[index], index);
-                        },
-                        background: Container(
-                          margin: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.error,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Delete expense',
-                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: Colors.white,
-                                  ),
-                              textAlign: TextAlign.end,
-                            ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: expensesList.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    Dismissible(
+                      key: ValueKey(expensesList[index]),
+                      onDismissed: (_) {
+                        _handleOnDismissed(context, expensesList[index], index);
+                      },
+                      background: Container(
+                        margin: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.error,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(16),
                           ),
                         ),
-                        child: ExpensesListItem(
-                          expensesList[index],
+                        child: Center(
+                          child: Text(
+                            'Delete expense',
+                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                  color: Colors.white,
+                                ),
+                            textAlign: TextAlign.end,
+                          ),
                         ),
                       ),
-                    ],
-                  );
-                },
-              ),
-            ),
-          if (expensesList.isEmpty)
-            Center(
-              child: Text(
-                'Your list of expenses list is empty. Click the add button below to add a new expense.',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
+                      child: ExpensesListItem(
+                        expensesList[index],
+                      ),
                     ),
-                textAlign: TextAlign.center,
-              ),
+                  ],
+                );
+              },
             ),
+          ),
         ],
       ),
     );

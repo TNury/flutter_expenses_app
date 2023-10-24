@@ -68,12 +68,9 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     );
   }
 
-  @override
-  Widget build(context) {
-    return Scaffold(
-      appBar: const Navbar(),
-      resizeToAvoidBottomInset: false,
-      body: Column(
+  Widget _buildBody() {
+    if (_registeredExpenses.isNotEmpty) {
+      return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Chart(_registeredExpenses),
@@ -86,7 +83,27 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
             ),
           ),
         ],
-      ),
+      );
+    } else {
+      return Center(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Text(
+            'Your list of expenses list is empty. Click the add button below to add a new expense.',
+            style: Theme.of(context).textTheme.bodyLarge,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(context) {
+    return Scaffold(
+      appBar: const Navbar(),
+      resizeToAvoidBottomInset: false,
+      body: _buildBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: _openExpenseAdditionOverlay,
         child: const Icon(
