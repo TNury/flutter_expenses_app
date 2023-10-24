@@ -18,12 +18,7 @@ class ExpenseCreationModal extends StatefulWidget {
 
 class _ExpenseCreationModalState extends State<ExpenseCreationModal> {
   final _formKey = GlobalKey<FormState>();
-  final _formValues = {
-    "title": "",
-    "amount": 0,
-    "category": null,
-    "date": null
-  };
+  final _formValues = {"title": "", "amount": 0, "category": null, "date": null};
 
   void _updateField(String fieldToUpdate, value) {
     setState(() {
@@ -137,7 +132,9 @@ class _ExpenseCreationModalState extends State<ExpenseCreationModal> {
                     onPressed: _submitForm,
                     child: Text(
                       'Create Expense',
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Colors.white,
+                          ),
                     ),
                   ),
                 ),

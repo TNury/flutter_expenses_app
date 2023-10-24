@@ -7,13 +7,13 @@ const _roundedShape = RoundedRectangleBorder(
   ),
 );
 
-UnderlineInputBorder _getInputBorder({Color borderColor = Colors.black}) {
-  return const UnderlineInputBorder(
+UnderlineInputBorder getInputBorder([Color borderColor = Colors.black]) {
+  return UnderlineInputBorder(
     borderSide: BorderSide(
       width: 1.5,
-      color: Colors.black,
+      color: borderColor,
     ),
-    borderRadius: BorderRadius.only(
+    borderRadius: const BorderRadius.only(
       topLeft: Radius.circular(8),
       topRight: Radius.circular(8),
     ),
@@ -30,18 +30,12 @@ final ThemeData theme = ThemeData().copyWith(
 
   scaffoldBackgroundColor: _colorScheme.background,
 
-  textTheme: textTheme,
+  textTheme: textTheme(),
   appBarTheme: const AppBarTheme().copyWith(
+    scrolledUnderElevation: 0,
     backgroundColor: _colorScheme.background,
     centerTitle: true,
-    titleTextStyle: textTheme.titleSmall,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(8),
-        bottomRight: Radius.circular(8),
-      ),
-    ),
-    // foregroundColor: _colorScheme.primaryContainer,
+    titleTextStyle: textTheme().titleSmall,
   ),
 
   // Dialog theme
@@ -54,6 +48,7 @@ final ThemeData theme = ThemeData().copyWith(
 
   // Bottom sheet theme
   bottomSheetTheme: const BottomSheetThemeData().copyWith(
+    // backgroundColor: _colorScheme.onBackground,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(16),
@@ -65,9 +60,8 @@ final ThemeData theme = ThemeData().copyWith(
   // Card theme
   cardTheme: const CardTheme().copyWith(
     elevation: 0,
-    color: _colorScheme.background,
-    surfaceTintColor: _colorScheme.background,
-    shape: _roundedShape,
+    color: Colors.transparent,
+    surfaceTintColor: Colors.transparent,
   ),
 
   // Filled button theme
@@ -90,12 +84,12 @@ final ThemeData theme = ThemeData().copyWith(
   inputDecorationTheme: const InputDecorationTheme().copyWith(
     filled: true,
     contentPadding: const EdgeInsets.all(0),
-    border: _getInputBorder(),
-    focusedBorder: _getInputBorder(),
-    errorBorder: _getInputBorder(borderColor: _colorScheme.error),
-    enabledBorder: _getInputBorder(),
-    disabledBorder: _getInputBorder(),
-    focusedErrorBorder: _getInputBorder(),
+    border: getInputBorder(),
+    focusedBorder: getInputBorder(),
+    errorBorder: getInputBorder(_colorScheme.error),
+    enabledBorder: getInputBorder(),
+    disabledBorder: getInputBorder(),
+    focusedErrorBorder: getInputBorder(),
     hintStyle: const TextStyle(color: Colors.grey),
     prefixStyle: const TextStyle(color: Colors.black),
     errorStyle: const TextStyle(

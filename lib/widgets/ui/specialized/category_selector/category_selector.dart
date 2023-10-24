@@ -30,11 +30,9 @@ class CategorySelector extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.fromLTRB(16, 16, 8, 16),
             hintText: 'Food, travel, etc',
-            hintStyle: TextStyle(
-              fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
-              color: Colors.grey,
-              fontWeight: Theme.of(context).textTheme.bodyMedium!.fontWeight,
-            ),
+            hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: Theme.of(context).inputDecorationTheme.hintStyle!.color,
+                ),
           ),
           style: Theme.of(context).textTheme.bodyMedium,
           validator: (value) {
@@ -55,6 +53,7 @@ class CategorySelector extends StatelessWidget {
               );
             }).toList();
           },
+          dropdownColor: Theme.of(context).colorScheme.secondaryContainer,
           items: Category.values.map((entry) {
             return DropdownMenuItem(
               value: entry,
