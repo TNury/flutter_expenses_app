@@ -37,7 +37,7 @@ class CategorySelector extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
           validator: (value) {
             if (value == null) {
-              return 'Select the category';
+              return 'Select a category.';
             }
 
             return null;

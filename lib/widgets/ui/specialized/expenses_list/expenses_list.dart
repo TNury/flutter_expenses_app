@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/models/expense.dart';
+import 'package:flutter_expenses_tracker/widgets/ui/generic/custom_snackbar.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/specialized/expenses_list/expenses_list_item.dart';
 
 class ExpensesList extends StatelessWidget {
@@ -22,32 +23,16 @@ class ExpensesList extends StatelessWidget {
     scaffoldMessenger.clearSnackBars();
 
     scaffoldMessenger.showSnackBar(
-      SnackBar(
-        padding: const EdgeInsets.all(16),
-        backgroundColor: Theme.of(context).colorScheme.error,
-        duration: const Duration(seconds: 2),
-        content: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Expense deleted.',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            TextButton(
-              onPressed: () {
-                scaffoldMessenger.removeCurrentSnackBar();
+      CustomSnackbar(
+        context: context,
+        severity: Severity.error,
+        text: 'Expense deleted.',
+        actionButtonText: 'Undo',
+        onActionButtonPress: () {
+          scaffoldMessenger.removeCurrentSnackBar();
 
-                createExpense(expense, index);
-              },
-              child: Text(
-                'Undo',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
-                    ),
-              ),
-            )
-          ],
-        ),
+          createExpense(expense, index);
+        },
       ),
     );
   }

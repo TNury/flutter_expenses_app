@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/models/expense.dart';
+import 'package:flutter_expenses_tracker/widgets/ui/generic/custom_snackbar.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/generic/input.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/generic/date_input.dart';
 import 'package:flutter_expenses_tracker/widgets/ui/specialized/category_selector/category_selector.dart';
@@ -39,6 +40,16 @@ class _ExpenseCreationModalState extends State<ExpenseCreationModal> {
       widget.createExpense(expense);
 
       Navigator.pop(context);
+
+      final scaffoldMessenger = ScaffoldMessenger.of(context);
+
+      scaffoldMessenger.showSnackBar(
+        CustomSnackbar(
+          context: context,
+          severity: Severity.success,
+          text: 'Expense created.',
+        ),
+      );
     }
   }
 
