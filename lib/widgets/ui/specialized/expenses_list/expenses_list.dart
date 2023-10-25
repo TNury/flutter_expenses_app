@@ -31,9 +31,7 @@ class ExpensesList extends StatelessWidget {
           children: [
             Text(
               'Expense deleted.',
-              style: TextStyle(
-                fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             TextButton(
               onPressed: () {

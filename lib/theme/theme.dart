@@ -24,6 +24,7 @@ final _colorScheme = ColorScheme.fromSeed(
   seedColor: Colors.blue,
   brightness: Brightness.dark,
   primary: Colors.blue,
+  error: Colors.red,
 );
 
 final ThemeData theme = ThemeData().copyWith(

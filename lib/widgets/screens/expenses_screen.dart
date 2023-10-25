@@ -17,13 +17,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     Expense(
       title: 'Groceries',
       category: Category.food,
-      amount: 200,
-      date: DateTime.now(),
-    ),
-    Expense(
-      title: 'Flutter Course',
-      category: Category.study,
-      amount: 15,
+      amount: 100,
       date: DateTime.now(),
     ),
     Expense(
@@ -87,7 +81,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     } else {
       return Center(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Text(
             'Your list of expenses list is empty. Click the add button below to add a new expense.',
             style: Theme.of(context).textTheme.bodyLarge,
