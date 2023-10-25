@@ -6,21 +6,6 @@ class ExpensesListItem extends StatelessWidget {
 
   final Expense expenseData;
 
-  Color getIconBackground(BuildContext context) {
-    switch (expenseData.category) {
-      case Category.food:
-        return Colors.green;
-      case Category.leisure:
-        return Colors.indigo;
-      case Category.travel:
-        return Colors.cyan;
-      case Category.study:
-        return Colors.purple;
-      default:
-        return Theme.of(context).colorScheme.primary;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -34,7 +19,7 @@ class ExpensesListItem extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: getIconBackground(context),
+                color: categoryColors[expenseData.category],
               ),
               child: Icon(
                 categoryIcons[expenseData.category],
@@ -77,8 +62,8 @@ class ExpensesListItem extends StatelessWidget {
                           Text(
                             expenseData.formattedDate,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
+                                  color: Theme.of(context).colorScheme.secondary,
+                                ),
                           ),
                           const SizedBox(width: 8),
                           const Icon(Icons.calendar_month_outlined),

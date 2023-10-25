@@ -11,6 +11,14 @@ const categoryIcons = {
   Category.study: Icons.menu_book_outlined
 };
 
+Map<Category, Color> categoryColors = {
+  Category.food: Colors.green,
+  Category.travel: Colors.orange,
+  Category.leisure: Colors.pink,
+  Category.work: Colors.blue,
+  Category.study: Colors.purple,
+};
+
 class Expense {
   Expense({
     required this.title,
