@@ -59,6 +59,9 @@ class Chart extends StatelessWidget {
             xValueMapper: (Expense expense, _) =>
                 getCapitalizedString(expense.category.name),
             yValueMapper: (Expense expense, _) => expense.amount,
+            dataLabelSettings: const DataLabelSettings(
+              isVisible: true,
+            ),
             pointColorMapper: (Expense expense, _) => categoryColors[expense.category],
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(4),
