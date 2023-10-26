@@ -27,6 +27,12 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
       date: DateTime.now(),
     ),
     Expense(
+      title: 'California Trip 2',
+      category: Category.travel,
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    Expense(
       title: 'California Trip',
       category: Category.travel,
       amount: 1000,

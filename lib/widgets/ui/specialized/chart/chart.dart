@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/models/expense.dart';
+import 'package:flutter_expenses_tracker/models/expense_bucket.dart';
 import 'package:flutter_expenses_tracker/utils/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -9,31 +10,12 @@ class Chart extends StatelessWidget {
 
   final List<Expense> registeredExpenses;
 
-  List<Expense> get _chartsData {
-    // Create a copy of registeredExpenses
-    List<Expense> chartsData = [...registeredExpenses];
+  List<ExpenseBucket> get _chartsData {
+    List<ExpenseBucket> chartsData = [];
 
-    // Get a list of all categories
-    List<Category> allCategories = Category.values.toList();
-
-    // Get a set of present categories
-    Set<Category> presentCategories = chartsData.map((e) => e.category).toSet();
-
-    // Get missing categories
-    List<Category> missingCategories =
-        allCategories.where((c) => !presentCategories.contains(c)).toList();
-
-    // Add placeholder expenses for missing categories
-    chartsData.addAll(
-      missingCategories.map(
-        (category) => Expense(
-          title: 'Placeholder',
-          category: category,
-          amount: 0,
-          date: DateTime.now(),
-        ),
-      ),
-    );
+    Category.values.forEach((element) {
+      chartsData.add(ExpenseBucket.forCategory(registeredExpenses, element));
+    });
 
     return chartsData;
   }
@@ -54,15 +36,16 @@ class Chart extends StatelessWidget {
       height: containerHeight,
       child: SfCartesianChart(
         series: <ChartSeries>[
-          ColumnSeries<Expense, String>(
+          ColumnSeries<ExpenseBucket, String>(
             dataSource: _chartsData,
-            xValueMapper: (Expense expense, _) =>
-                getCapitalizedString(expense.category.name),
-            yValueMapper: (Expense expense, _) => expense.amount,
+            xValueMapper: (ExpenseBucket expenseBucket, _) =>
+                getCapitalizedString(expenseBucket.category.name),
+            yValueMapper: (ExpenseBucket expenseBucket, _) => expenseBucket.totalExpenses,
             dataLabelSettings: const DataLabelSettings(
               isVisible: true,
             ),
-            pointColorMapper: (Expense expense, _) => categoryColors[expense.category],
+            pointColorMapper: (ExpenseBucket expenseBucket, _) =>
+                categoryColors[expenseBucket.category],
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(4),
               topRight: Radius.circular(4),
